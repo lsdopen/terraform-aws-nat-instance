@@ -81,6 +81,8 @@ resource "aws_launch_template" "this" {
   image_id    = var.image_id != "" ? var.image_id : data.aws_ami.this[each.value].id
   key_name    = var.key_name
 
+  update_default_version = true
+
   iam_instance_profile {
     arn = aws_iam_instance_profile.this.arn
   }
