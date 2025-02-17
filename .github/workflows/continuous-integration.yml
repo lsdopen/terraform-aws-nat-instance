@@ -1,0 +1,9 @@
+name: 'Continuous Integration'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  continuous-integration:
+    name: 'Continuous Integration'
+    uses: lsdopen/.github/.github/workflows/terraform-module-continuous-integration.yaml@main

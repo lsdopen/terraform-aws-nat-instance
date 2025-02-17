@@ -1,0 +1,16 @@
+name: 'Dependanot'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 23 * * 3'
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependanot:
+    name: 'Dependanot'
+    uses: lsdopen/.github/.github/workflows/dependanot.yaml@main
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
