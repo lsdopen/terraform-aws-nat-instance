@@ -110,17 +110,17 @@ resource "aws_launch_template" "this" {
       write_files : concat([
         {
           path : "/opt/nat/runonce.sh",
-          content : templatefile("${path.module}/runonce.sh", { eni_id = aws_network_interface.this.id }),
+          content : templatefile("${path.module}/templates/runonce.sh", { eni_id = aws_network_interface.this.id }),
           permissions : "0755",
         },
         {
           path : "/opt/nat/snat.sh",
-          content : file("${path.module}/snat.sh"),
+          content : file("${path.module}/templates/snat.sh"),
           permissions : "0755",
         },
         {
           path : "/etc/systemd/system/snat.service",
-          content : file("${path.module}/snat.service"),
+          content : file("${path.module}/templates/snat.service"),
         },
       ], var.user_data_write_files),
       runcmd : concat([
